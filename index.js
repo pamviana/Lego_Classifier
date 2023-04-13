@@ -1,3 +1,5 @@
+let stream; //not best practice, but this application is very small
+
 function openCamera(){
     mainBox = document.getElementById("main_page");
     mainBox.style.display = 'none';
@@ -10,7 +12,7 @@ function openCamera(){
 
 async function startCamera(){
     let video = document.querySelector("#video");
-    let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     video.srcObject = stream;
 }
 
@@ -24,9 +26,12 @@ function takePicture(){
 
 function goBackToMain(currentScreen) {
     let screen = document.getElementById(currentScreen);
-    console.log(screen)
     screen.style.display = 'none';
 
     mainBox = document.getElementById("main_page");
     mainBox.style.display = 'block';
+
+    if(currentScreen == 'camera_page') {
+        stream.getTracks()[0].stop();
+    }
 }
