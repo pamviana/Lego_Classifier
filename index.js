@@ -61,7 +61,7 @@ function openResultScreen(picture, previousScreen){
 function testAPI() {
     fetch('http://127.0.0.1:5000/result')
     .then(function (response) {
-        console.log('success!', response);
+       console.log(response)
     })
     .catch(function (err) {
         // There was an error
