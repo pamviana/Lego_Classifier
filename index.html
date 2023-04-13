@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="urf-8" />
+    <title>Lego Classifier</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Open+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="index.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div id="main">
+      <div class="main-box" id="main_page">
+        <div class="button-wrapper">
+          <button onclick="openCamera()">Take a picture</button>
+          <button>Upload a picture</button>
+        </div>
+      </div>
+      <div class="main-box" id="camera_page">
+        <div class="camera-page-wrapper">
+            <video id="video" width="320" height="240" autoplay></video>
+            <button id="click-photo" onclick="takePicture()"></button>
+            <canvas id="canvas" width="100" height="80"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
