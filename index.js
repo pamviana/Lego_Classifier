@@ -36,7 +36,7 @@ function goBackToMain(currentScreen) {
     }
 }
 
-function openUploadPage(){
+function uploadPicture(){
     mainBox = document.getElementById("main_page");
     mainBox.style.display = 'none'; 
 
@@ -44,44 +44,19 @@ function openUploadPage(){
     cameraBox.style.display = 'block';
 }
 
-function handleFileSelect(event) {
-    event.stopPropagation();
-    event.preventDefault();
+const pictureOutput = document.getElementById('output');
+const file =document.getElementById('file');
 
-    var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-    var file = files[0];
+file.addEventListener('change', function(){
 
-    if (file.type.match('image.*')) {
-        var reader = new FileReader();
-
-        reader.onload = (function(theFile) {
-            return function(e) {
-                var img = document.createElement('img');
-                img.src = e.target.result;
-
-                // Do something with the image here
-                // For example, add it to the DOM
-                var imageContainer = document.querySelector('#image-container');
-                imageContainer.appendChild(img);
-            };
-        })(file);
-
-        reader.readAsDataURL(file);
-    } else {
-        alert('Please select an image file');
-    }
-}
-
-var dropZone = document.querySelector('#drop-zone');
-
-dropZone.addEventListener('dragover', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'copy';
+    const files = file.files[0];
+    if (files) {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(files);
+    fileReader.addEventListener("load", function () {
+    pictureOutput.style.display = "block";
+    pictureOutput.innerHTML = '<img src="' + this.result + '" style="height: 100%; width: 80%; object-fit: cover;"/>';
+    uploadPicture();
+    });    
+  }
 });
-
-dropZone.addEventListener('drop', handleFileSelect);
-
-var fileInput = document.querySelector('#file-input');
-
-fileInput.addEventListener('change', handleFileSelect);

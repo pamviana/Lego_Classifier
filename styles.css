@@ -46,7 +46,7 @@ h1 {
     justify-content: center;
 }
 
-.button-wrapper button {
+.button-wrapper button, .upload_button{
     width: 60%;
     padding: 15px;
     background-color: #2196F3;
@@ -58,7 +58,7 @@ h1 {
     font-size: 20px;
 }
 
-.button-wrapper button:hover{
+.button-wrapper button:hover, .upload_button:hover{
     background-color: #2195f387;
 }
 
