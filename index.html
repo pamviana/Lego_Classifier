@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="camera-page.styles.css" />
+    <link rel="stylesheet" href="upload-page.styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,11 +21,11 @@
       <div class="main-box" id="main_page">
         <div class="button-wrapper">
           <button onclick="openCamera()">Take a picture</button>
-          <button>Upload a picture</button>
+          <button onclick="openUploadPage()">Upload a picture</button>
         </div>
       </div>
 
-
+      
       <div class="main-box" id="camera_page">
         <button id="back-button-camera" class="small-buttons" onclick="goBackToMain('camera_page')">Back</button>
         <div class="camera-page-wrapper">
@@ -33,6 +34,14 @@
             <canvas id="canvas" width="100" height="80"></canvas>
         </div>
       </div>
+
+
+      <div class="main-box" id="upload_page">
+        <button id="back-button-camera" class="small-buttons" onclick="goBackToMain('upload_page')">Back</button>
+        <div class="upload-page-wrapper">
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

@@ -35,3 +35,11 @@ function goBackToMain(currentScreen) {
         stream.getTracks()[0].stop();
     }
 }
+
+function openUploadPage(){
+    mainBox = document.getElementById("main_page");
+    mainBox.style.display = 'none'; 
+
+    cameraBox = document.getElementById("upload_page");
+    cameraBox.style.display = 'block';
+}
