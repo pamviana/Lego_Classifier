@@ -24,7 +24,7 @@ function takePicture(){
     if(stream != undefined) {
         stream.getTracks()[0].stop();
     }
-    
+
     openResultScreen(image_data_url, "camera_page");
 
 }
@@ -55,6 +55,18 @@ function openResultScreen(picture, previousScreen){
     let cameraBox = document.getElementById("upload_page");
     cameraBox.style.display = 'block';
 
+    testAPI();
+}
+
+function testAPI() {
+    fetch('http://127.0.0.1:5000/result')
+    .then(function (response) {
+        console.log('success!', response);
+    })
+    .catch(function (err) {
+        // There was an error
+        console.warn('Something went wrong.', err);
+    });
 }
 
 
