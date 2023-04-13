@@ -43,3 +43,45 @@ function openUploadPage(){
     cameraBox = document.getElementById("upload_page");
     cameraBox.style.display = 'block';
 }
+
+function handleFileSelect(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    var file = files[0];
+
+    if (file.type.match('image.*')) {
+        var reader = new FileReader();
+
+        reader.onload = (function(theFile) {
+            return function(e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+
+                // Do something with the image here
+                // For example, add it to the DOM
+                var imageContainer = document.querySelector('#image-container');
+                imageContainer.appendChild(img);
+            };
+        })(file);
+
+        reader.readAsDataURL(file);
+    } else {
+        alert('Please select an image file');
+    }
+}
+
+var dropZone = document.querySelector('#drop-zone');
+
+dropZone.addEventListener('dragover', function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+});
+
+dropZone.addEventListener('drop', handleFileSelect);
+
+var fileInput = document.querySelector('#file-input');
+
+fileInput.addEventListener('change', handleFileSelect);

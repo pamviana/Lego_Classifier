@@ -1,3 +1,42 @@
 #upload_page{
     display: none;
 }
+
+.upload-page-wrapper{
+    border: 1px dashed #8e9194;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 88%;
+    height: 200px;
+    gap: 16px;
+}
+
+.upload-content{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+}
+
+.upload-page-wrapper button {
+    background-color: white;
+    border: 1px solid #2196F3;
+    border-radius: 2px;
+    color: #2196F3;
+    padding: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.upload-page-wrapper button:hover {
+    background-color: #2196F3;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.upload-page-wrapper p {
+    color: #8e9194;
+    font-size: 10px;
+}

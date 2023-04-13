@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 #main {
     height: 100vh;
     display: flex;
@@ -58,7 +62,7 @@ h1 {
     background-color: #2195f387;
 }
 
-@media only screen and (max-width: 1400px) and (min-width: 700px){
+@media only screen and (max-width: 1200px) and (min-width: 700px){
     .main-box {
         width: 40vw;
     }
@@ -70,9 +74,9 @@ h1 {
     }
 }
 
-@media only screen and (max-height: 660px){
+@media only screen and (max-height: 400px){
     .main-box {
-        height: 85vw;
+        height: 380px;
     }
 }
 
