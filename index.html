@@ -5,6 +5,7 @@
     <title>Lego Classifier</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="camera-page.styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,9 +23,12 @@
           <button>Upload a picture</button>
         </div>
       </div>
+
+
       <div class="main-box" id="camera_page">
+        <button id="back-button-camera" class="small-buttons" onclick="goBackToMain('camera_page')">Back</button>
         <div class="camera-page-wrapper">
-            <video id="video" width="320" height="240" autoplay></video>
+            <video id="video" width="80%" height="50%" autoplay></video>
             <button id="click-photo" onclick="takePicture()"></button>
             <canvas id="canvas" width="100" height="80"></canvas>
         </div>

@@ -1,0 +1,33 @@
+/* CAMERA "PAGE" */
+
+#camera_page {
+    display: none;
+}
+
+.camera-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+#click-photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background-color: black;
+}
+
+#click-photo:hover{
+    background-color: rgba(0, 0, 0, 0.581);
+}
+
+#back-button-camera {
+    margin-left: 11px;
+    margin-top: 11px;
+    border-radius: 1px;
+    font-size: 10px;
+}

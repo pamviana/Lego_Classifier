@@ -18,8 +18,8 @@ h1 {
 
 .main-box{
     background-color: white;
-    width: 25%;
-    height: 60%;
+    width: 25vw;
+    height: 60vh;
     border-radius: 1px;
     display: flex;
     align-items: center;
@@ -58,29 +58,34 @@ h1 {
     background-color: #2195f387;
 }
 
-/* CAMERA "PAGE" */
-
-#camera_page {
-    display: none;
+@media only screen and (max-width: 1400px) and (min-width: 700px){
+    .main-box {
+        width: 40vw;
+    }
 }
 
-.camera-page-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    height: 100%;
+@media only screen and (max-width: 700px){
+    .main-box {
+        width: 50vw;
+    }
 }
 
-#click-photo{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+@media only screen and (max-height: 660px){
+    .main-box {
+        height: 85vw;
+    }
+}
+
+/* DEFAULT STYLE */
+
+.small-buttons {
+    background-color: #2196F3;
     border: 0;
-    background-color: black;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
 }
 
-#click-photo:hover{
-    background-color: rgba(0, 0, 0, 0.581);
+.small-buttons:hover {
+    background-color: #2195f387;
 }

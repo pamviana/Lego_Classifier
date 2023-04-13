@@ -21,3 +21,12 @@ function takePicture(){
 
     console.log(image_data_url);
 }
+
+function goBackToMain(currentScreen) {
+    let screen = document.getElementById(currentScreen);
+    console.log(screen)
+    screen.style.display = 'none';
+
+    mainBox = document.getElementById("main_page");
+    mainBox.style.display = 'block';
+}
