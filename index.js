@@ -21,7 +21,12 @@ function takePicture(){
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     let image_data_url = canvas.toDataURL('image/jpeg');
 
+    if(stream != undefined) {
+        stream.getTracks()[0].stop();
+    }
+    
     openResultScreen(image_data_url, "camera_page");
+
 }
 
 function goBackToMain(currentScreen) {
@@ -31,7 +36,7 @@ function goBackToMain(currentScreen) {
     let mainBox = document.getElementById("main_page");
     mainBox.style.display = 'block';
 
-    if(currentScreen == 'camera_page' && stream != undefined) {
+    if(stream != undefined) {
         stream.getTracks()[0].stop();
     }
 }
