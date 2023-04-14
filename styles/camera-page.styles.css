@@ -18,7 +18,8 @@
     height: 30px;
     border-radius: 50%;
     border: 0;
-    background-color: black;
+    background-color: var(--secondary-color);
+    cursor: pointer;
 }
 
 #click-photo:hover{
