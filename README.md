@@ -7,7 +7,7 @@ Just copy and paste the content of the API.py file and paste it to a python file
 After running it, you will get something like this on the console:
 ![image](https://user-images.githubusercontent.com/54336594/231930155-07b3095f-c565-4d4c-9779-2ffca901ea7a.png)
 
-Go to https://lego-classifier.vercel.app/
+Go to https://lego-classifier.vercel.app/ or open the file index.html Either one works. 
 
 To make sure the API is working, upload any picture or take a picture, and you should see the text "hardcoded result" on the result screen. You should also see this on Chrome console:
 
