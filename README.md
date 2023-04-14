@@ -14,4 +14,11 @@ To make sure the API is working, upload any picture or take a picture, and you s
 ![image](https://user-images.githubusercontent.com/54336594/231930574-e20c1273-775f-4b92-8aa3-af143e89cf01.png)
 
 
+# If you want to change the colors around:
+Go to styles/default_styles.css and change the colors under "root":
+![image](https://user-images.githubusercontent.com/54336594/231930715-ca26e762-8c5d-4f9b-8374-a0bead47427b.png)
 
+You will notice that those variables under root are used throughout the other css files, like in this one:
+![image](https://user-images.githubusercontent.com/54336594/231930852-f5e8f370-0476-4f6c-b2bd-eb82459027f7.png)
+
+Feel free to change the background image too. Go to styles/styles.css, and it is under main > background-image
