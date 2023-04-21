@@ -1,4 +1,6 @@
 let stream; //not best practice, because it is a global variable, but this application is very small, so it is fine here
+let height = 0;
+let width = 400;
 
 // It is called when the 'Take a picture' button is called
 // It opens the camera page, and hide the main page
@@ -17,6 +19,16 @@ async function startCamera(){
     let video = document.querySelector("#video");
     stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     video.srcObject = stream;
+    height = (video.videoHeight / video.videoWidth) * width;
+
+    if (isNaN(height)) {
+        height = width / (4 / 3);
+    }
+
+    video.setAttribute("width", width);
+    video.setAttribute("height", height);
+    canvas.setAttribute("width", width);
+    canvas.setAttribute("height", height);
 }
 
 
@@ -54,7 +66,7 @@ function openResultScreen(picture, previousScreen){
     let pictureOutput = document.getElementById('output');
     //Adds the picture to the result screen
     pictureOutput.style.display = "block";
-    pictureOutput.innerHTML = '<img src="' + picture + '" style="height: 100%; width: 80%; object-fit: cover;"/>';
+    pictureOutput.innerHTML = '<img src="' + picture + '" object-fit: cover;"/>';
     
     //It hides the main screen before showing the result screen
     let previousContent = document.getElementById(previousScreen);
