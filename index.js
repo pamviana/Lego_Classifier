@@ -66,7 +66,7 @@ function openResultScreen(picture, previousScreen){
     let pictureOutput = document.getElementById('output');
     //Adds the picture to the result screen
     pictureOutput.style.display = "block";
-    pictureOutput.innerHTML = '<img src="' + picture + '" object-fit: cover;"/>';
+    pictureOutput.innerHTML = '<img src="' + picture + '"/>';
     
     //It hides the main screen before showing the result screen
     let previousContent = document.getElementById(previousScreen);
