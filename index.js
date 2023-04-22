@@ -62,7 +62,6 @@ function goBackToMain(currentScreen) {
 // It gets the result and opens the screen 
 function openResultScreen(picture, previousScreen){
     console.log(picture.slice(0,20));
-    evalutePicture("hardcoded result");
     let pictureOutput = document.getElementById('output');
     //Adds the picture to the result screen
     pictureOutput.style.display = "block";
@@ -98,8 +97,10 @@ async function getResultForPicture(picture) {
 // This function is called when the "Upload a picture" button or the button that takes a picture are pressed.
 // It will send the picture to our back-end using the API we created in Python.
 async function evalutePicture(picture){
+    document.getElementById("loading-page").style.display = "flex";
     output = await getResultForPicture(picture);
     console.log(output);
+    document.getElementById("loading-page").style.display = "none";
 
     //It sets the <p> tag for the result text, for example "Harry Potter Minifigure"
     document.getElementById('result-text').innerHTML = output;
@@ -115,7 +116,13 @@ file.addEventListener('change', function(){
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files);
         fileReader.addEventListener("load", function () {
+            evalutePicture("hardcoded result");
             openResultScreen(this.result, "main_page");
     });    
   }
 });
+
+function redirectToBuy(partID){
+    url = `https://www.toypro.com/us/search?search=${partID}`;
+    window.location.href = url;
+}

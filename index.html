@@ -57,8 +57,17 @@
         <div class="upload-content">
             <div id="output">
             </div>
-            <p id="result-text"></p>
+            <div class="result-wrapper">
+              <input name="part-id" id="part-id" class="input-result-page" readonly value="17856">
+              <input name="part-color" id="part-color" class="input-result-page" readonly value="Yellow">
+              <textarea name="sets" id="sets" class="input-result-page" readonly>Set 26644</textarea>
+            </div>            
+            <button class="small-buttons" id="buy-button" onclick="redirectToBuy(10247)">Buy it!</button>
         </div>        
+      </div>
+
+      <div id="loading-page">
+        <img src="images/spin2.gif" alt="image_description">
       </div>
     </div>
   </body>
