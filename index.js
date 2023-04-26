@@ -104,6 +104,13 @@ async function getColors(part_num) {
         });
         const result = await response.json();
         console.log("Colors: ", result)
+        const colors_select = document.getElementById("part-color");
+        for(let i=0;i<result.count;i++) {
+            var option = document.createElement("option");
+            option.text = result.results[i].color_name;
+            option.value = result.results[i].color_id;
+            colors_select.options.add(option);
+        }
 
     } catch (error) {
         console.warn("Rebrickable API failed", error);
@@ -116,12 +123,11 @@ async function getColors(part_num) {
 async function evalutePicture(picture){
     document.getElementById("loading-page").style.display = "flex";
     partNum = await getPartNum(picture);
-    color = await getColors(partNum.partId);
+    await getColors(partNum.partId);
     console.log("Part Num: ", partNum);
     document.getElementById("loading-page").style.display = "none";
-    document.getElementById("part-id").value = partNum.partId;
-    document.getElementById("part-color").value = "Yellow";
-
+    document.getElementById("part-id").value = partNum.partId;    
+    
     //It sets the <p> tag for the result text, for example "Harry Potter Minifigure"
     //document.getElementById('result-text').innerHTML = "hello";
 }
@@ -143,6 +149,33 @@ file.addEventListener('change', function(){
         
     }
 });
+
+const color_select = document.getElementById('part-color');
+
+color_select.addEventListener('change', function() {
+    console.log(color_select.value);
+    console.log(document.getElementById("part-id").value);
+    getSets(color_select.value, document.getElementById("part-id").value);
+});
+
+async function getSets(colorID, partID){
+    try {
+        const response = await fetch(`https://rebrickable.com/api/v3/lego/parts/${partID}/colors/${colorID}/sets/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'key d530e073c6d7da7db3e90c73e3d8b9af'
+            }
+        });
+        const result = await response.json();
+        document.getElementById('sets_count').textContent = result.count;
+        console.log("Sets count: ", result.count)
+
+    } catch (error) {
+        console.warn("Rebrickable API failed", error);
+        return "Rebrickable API failed"
+    }
+
+}
 
 function redirectToBuy(partID){
     url = `https://www.toypro.com/us/search?search=${partID}`;

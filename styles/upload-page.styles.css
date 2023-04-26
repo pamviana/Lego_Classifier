@@ -12,13 +12,18 @@
     text-align: center;    
 }
 
+.upload-content label{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
 .result-wrapper{
     width: 95%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     width: 80%;
     gap: 6px;
-    justify-content: center;
+    grid-template-columns: 3fr 1fr;
 }
 
 .result-wrapper input, .result-wrapper textarea{
@@ -38,6 +43,13 @@
 #output img{
     max-width: 50%;
     max-height: 100%;
+}
+
+#sets-wrapper {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #buy-button{

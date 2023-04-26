@@ -58,10 +58,17 @@
             <div id="output">
             </div>
             <div class="result-wrapper">
+              <label for="part-id">Part Num</label>
               <input name="part-id" id="part-id" class="input-result-page" readonly value="No value">
-              <input name="part-color" id="part-color" class="input-result-page" readonly value="No color">
-              <textarea name="sets" id="sets" class="input-result-page" readonly>Set 26644</textarea>
-            </div>            
+              <label for="part-color">Available Colors</label>
+              <select name="part-color" id="part-color" class="input-result-page" readonly value="No color">
+                <option value="select_color">Select a color</option>
+              </select>              
+            </div>     
+            <div id="sets-wrapper">
+              <p id="sets_result">Appears in <span id="sets_count" style="color: var(--background-color);">?</span> sets</p>
+              <p id="sets_return">Click here to see the sets</p>
+            </div>       
             <button class="small-buttons" id="buy-button" onclick="redirectToBuy(10247)">Buy it!</button>
         </div>        
       </div>
