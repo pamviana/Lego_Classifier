@@ -76,21 +76,38 @@ function openResultScreen(picture, previousScreen){
 }
 
 // It does a post to our API using the picture that was uploaded or taken. 
-async function getResultForPicture(picture) {
-    const data = { 'picture': picture }
+async function getPartNum(picture) {
+    console.log("Picture", picture)
     try {
         const response = await fetch('http://127.0.0.1:5000/result', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ picture: picture })
         });
         const result = await response.json();
-        return result.result;
+        return result;
     } catch (error) {
         console.warn('Something went wrong.', error);
         return "There was an error";
+    }
+}
+
+async function getColors(part_num) {
+    try {
+        const response = await fetch(`https://rebrickable.com/api/v3/lego/parts/${part_num}/colors/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'key d530e073c6d7da7db3e90c73e3d8b9af'
+            }
+        });
+        const result = await response.json();
+        console.log("Colors: ", result)
+
+    } catch (error) {
+        console.warn("Rebrickable API failed", error);
+        return "Rebrickable API failed"
     }
 }
 
@@ -98,9 +115,12 @@ async function getResultForPicture(picture) {
 // It will send the picture to our back-end using the API we created in Python.
 async function evalutePicture(picture){
     document.getElementById("loading-page").style.display = "flex";
-    output = await getResultForPicture(picture);
-    console.log(output);
+    partNum = await getPartNum(picture);
+    color = await getColors(partNum.partId);
+    console.log("Part Num: ", partNum);
     document.getElementById("loading-page").style.display = "none";
+    document.getElementById("part-id").value = partNum.partId;
+    document.getElementById("part-color").value = "Yellow";
 
     //It sets the <p> tag for the result text, for example "Harry Potter Minifigure"
     //document.getElementById('result-text').innerHTML = "hello";
@@ -113,13 +133,15 @@ const file = document.getElementById('file');
 file.addEventListener('change', function(){
     const files = file.files[0];
     if (files) {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(files);
-        fileReader.addEventListener("load", async function () {
-            await evalutePicture("hardcoded result");
+        const fileReader = new FileReader();     
+        fileReader.readAsDataURL(files);   
+        fileReader.addEventListener("load", async function () {            
+            const picture = fileReader.result;
+            await evalutePicture(picture);            
             openResultScreen(this.result, "main_page");
-    });    
-  }
+        });    
+        
+    }
 });
 
 function redirectToBuy(partID){
