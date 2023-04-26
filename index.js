@@ -103,7 +103,7 @@ async function evalutePicture(picture){
     document.getElementById("loading-page").style.display = "none";
 
     //It sets the <p> tag for the result text, for example "Harry Potter Minifigure"
-    document.getElementById('result-text').innerHTML = output;
+    //document.getElementById('result-text').innerHTML = "hello";
 }
 
 
@@ -115,8 +115,8 @@ file.addEventListener('change', function(){
     if (files) {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files);
-        fileReader.addEventListener("load", function () {
-            evalutePicture("hardcoded result");
+        fileReader.addEventListener("load", async function () {
+            await evalutePicture("hardcoded result");
             openResultScreen(this.result, "main_page");
     });    
   }

@@ -72,6 +72,7 @@ h1 {
     .main-box {
         width: 50vw;
     }
+    
 }
 
 @media only screen and (max-height: 400px){
