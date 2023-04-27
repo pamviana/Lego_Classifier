@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/styles.css" />    
     <link rel="stylesheet" href="./styles/camera-page.styles.css" />
     <link rel="stylesheet" href="./styles/upload-page.styles.css" />
+    <link rel="stylesheet" href="./styles/sets-page.styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -62,16 +63,22 @@
               <input name="part-id" id="part-id" class="input-result-page" readonly value="No value">
               <label for="part-color">Available Colors</label>
               <select name="part-color" id="part-color" class="input-result-page" readonly value="No color">
-                <option value="select_color">Select a color</option>
+                <option value="select-color">Select a color</option>
               </select>              
             </div>     
             <div id="sets-wrapper">
               <p id="sets_result">Appears in <span id="sets_count" style="color: var(--background-color);">?</span> sets</p>
-              <p id="sets_return">Click here to see the sets</p>
+              <p id="sets_return">Click <a onclick="goToSetsPage(event)" style="color: var(--background-color); cursor: pointer;">here</a> to see the sets</p>
             </div>       
-            <button class="small-buttons" id="buy-button" onclick="redirectToBuy(10247)">Buy it!</button>
+            <button class="small-buttons" id="buy-button" onclick="redirectToBuy()">Buy it!</button>
         </div>        
       </div>
+
+      <div class="main-box" id="sets_page">
+        <div class="sets-page-wrapper" id="sets-page-wrapper">      
+        </div>        
+      </div>       
+
 
       <div id="loading-page">
         <img src="images/spin2.gif" alt="image_description">

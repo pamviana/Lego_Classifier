@@ -48,7 +48,8 @@ function takePicture(){
 
 // It is called when the button "Back" is pressed.
 function goBackToMain(currentScreen) {
-    let screen = document.getElementById(currentScreen);
+    document.getElementById('sets_page').style.display = 'none';
+    let screen = document.getElementById(currentScreen);    
     screen.style.display = 'none';
 
     let mainBox = document.getElementById("main_page");
@@ -105,6 +106,16 @@ async function getColors(part_num) {
         const result = await response.json();
         console.log("Colors: ", result)
         const colors_select = document.getElementById("part-color");
+
+        while (colors_select.firstChild) {
+            colors_select.removeChild(colors_select.firstChild);
+        }
+
+        var option = document.createElement("option");
+        option.text = "Select a color";
+        option.value = "select-color";
+        colors_select.options.add(option);
+
         for(let i=0;i<result.count;i++) {
             var option = document.createElement("option");
             option.text = result.results[i].color_name;
@@ -127,9 +138,6 @@ async function evalutePicture(picture){
     console.log("Part Num: ", partNum);
     document.getElementById("loading-page").style.display = "none";
     document.getElementById("part-id").value = partNum.partId;    
-    
-    //It sets the <p> tag for the result text, for example "Harry Potter Minifigure"
-    //document.getElementById('result-text').innerHTML = "hello";
 }
 
 
@@ -159,25 +167,44 @@ color_select.addEventListener('change', function() {
 });
 
 async function getSets(colorID, partID){
-    try {
-        const response = await fetch(`https://rebrickable.com/api/v3/lego/parts/${partID}/colors/${colorID}/sets/`, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'key d530e073c6d7da7db3e90c73e3d8b9af'
+    const colors_select = document.getElementById("part-color");
+
+    if (colors_select.value != "select-color") {
+        try {
+            const response = await fetch(`https://rebrickable.com/api/v3/lego/parts/${partID}/colors/${colorID}/sets/`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'key d530e073c6d7da7db3e90c73e3d8b9af'
+                }
+            });
+            const result = await response.json();
+            document.getElementById('sets_count').textContent = result.count;
+            
+            setWrapper = document.getElementById('sets-page-wrapper');
+            setWrapper.innerHTML = '';
+    
+            for (let i=0; i<result.count; i++) {         
+                setWrapper.innerHTML += `<div class="set-wrapper"><img src=${result.results[i].set_img_url}><div class="set-info-wrapper"><p>${result.results[i].name}</p><p>${result.results[i].set_num}</p></div></div>`
             }
-        });
-        const result = await response.json();
-        document.getElementById('sets_count').textContent = result.count;
-        console.log("Sets count: ", result.count)
-
-    } catch (error) {
-        console.warn("Rebrickable API failed", error);
-        return "Rebrickable API failed"
+    
+            console.log("Sets count: ", result.count)
+    
+        } catch (error) {
+            console.warn("Rebrickable API failed", error);
+            return "Rebrickable API failed"
+        }
     }
-
 }
 
-function redirectToBuy(partID){
+function goToSetsPage(event) {
+    event.preventDefault();
+    if (document.getElementById("part-color").value != "select-color") {
+        document.getElementById('sets_page').style.display = 'block';
+    }    
+}
+
+function redirectToBuy(){
+    partID = document.getElementById("part-id").value;
     url = `https://www.toypro.com/us/search?search=${partID}`;
     window.location.href = url;
 }

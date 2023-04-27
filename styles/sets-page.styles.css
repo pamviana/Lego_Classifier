@@ -1,0 +1,45 @@
+#sets_page {
+    overflow-y: scroll;
+    display: none;
+}
+
+.set-wrapper img {
+    max-width: 40%;
+    max-height: 100%;
+}
+
+.set-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    height: 70px;
+    border: 1px solid lightgrey;
+    margin: 10px;
+}
+
+.sets-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-height: 100%;
+}
+
+.set-info-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#sets_page::-webkit-scrollbar {
+    width: 10px;
+}
+
+#sets_page::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#sets_page::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
